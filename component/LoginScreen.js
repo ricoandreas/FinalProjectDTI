@@ -12,6 +12,7 @@ import {
 function LoginScreen() {
   const navigation = useNavigation();
   const gotoRegis = () => navigation.navigate('RegisScreen');
+  const gotoAdmin = () => navigation.navigate('AdminMenu');
   return (
     <SafeAreaView style={css.main}>
       <View>
@@ -40,9 +41,7 @@ function LoginScreen() {
             style={css.inputtext}
             placeholderTextColor="#9B9B9B"
           />
-          <TouchableOpacity
-            style={css.loginbutton}
-            onPress={() => alert('Login to Admin')}>
+          <TouchableOpacity style={css.loginbutton} onPress={gotoAdmin}>
             <Text style={{fontSize: 16}}>Login as Admin</Text>
           </TouchableOpacity>
           <TouchableOpacity
