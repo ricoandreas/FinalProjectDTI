@@ -4,9 +4,9 @@ import {
   View,
   Text,
   FlatList,
-  SafeAreaView,
+  ScrollView,
   StyleSheet,
-  Image,
+  TouchableOpacity,
 } from 'react-native';
 
 const dataDummy = [
@@ -31,38 +31,65 @@ const dataDummy = [
     nomeja: '04',
     pembayaran: 'CASHLESS',
   },
+  {
+    id: 4,
+    status: 'cooking',
+    order_number: 'acs-912',
+    nomeja: '01',
+    pembayaran: 'CASH',
+  },
+  {
+    id: 5,
+    status: 'cooking',
+    order_number: 'acs-923',
+    nomeja: '05',
+    pembayaran: 'CASH',
+  },
+  {
+    id: 6,
+    status: 'cooking',
+    order_number: 'acs-912',
+    nomeja: '04',
+    pembayaran: 'CASHLESS',
+  },
 ];
 
 const renderList = ({item}) => (
-  <View style={css.flatlistcontainer}>
-    <View style={{width: 30, height: 30}}>
-      {/* <Image
-        source={require('../assets/icon/cook.png')}
-        style={{width: 70, height: 70}}
-      /> */}
-      <Icons size={70} />
+  <TouchableOpacity style={css.flatlistcontainer}>
+    <View>
+      <Icons
+        size={70}
+        iconName={require('../assets/icon/cooking.png')}
+        bg={'#489AC8'}
+      />
     </View>
-    <View style={{left: 50}}>
-      <Text>
-        {item.order_number}
-        {item.nomeja}
-        {item.pembayaran}
-      </Text>
+    <View style={css.TextContainer}>
+      <View style={css.insideTextContainer}>
+        <Text>{item.order_number}</Text>
+        <Text>{item.nomeja}</Text>
+      </View>
+      <View style={{alignSelf: 'center'}}>
+        <Text>{item.pembayaran}</Text>
+      </View>
     </View>
-  </View>
+  </TouchableOpacity>
 );
 
 function OrderList() {
   return (
-    <SafeAreaView>
+    <View>
       <View style={css.header}>
-        <Text style={css.headerWhite}>Resto Mantap</Text>
+        <Text style={css.headerWhite}>ORDER LIST</Text>
         <Text style={css.headerWhite}>Logout</Text>
       </View>
       <View style={css.container}>
-        <FlatList data={dataDummy} renderItem={renderList} />
+        <ScrollView>
+          <View>
+            <FlatList data={dataDummy} renderItem={renderList} />
+          </View>
+        </ScrollView>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -82,18 +109,33 @@ const css = StyleSheet.create({
     fontSize: 20,
   },
   container: {
-    height: '100%',
+    height: '92%',
+    alignItems: 'center',
     backgroundColor: '#2E3035',
+    alignItems: 'center',
     opacity: 0.7,
-    padding: 20,
+    padding: 10,
   },
   flatlistcontainer: {
     margin: 5,
     backgroundColor: 'white',
-    width: 320,
+    width: 300,
     height: 80,
     borderRadius: 10,
     display: 'flex',
     flexDirection: 'row',
+  },
+  TextContainer: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+  },
+  insideTextContainer: {
+    flex: 2,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
 });

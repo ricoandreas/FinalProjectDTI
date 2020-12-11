@@ -1,7 +1,22 @@
 import React from 'react';
 import {OrderList} from './OrderList';
+import {EditMenu} from './EditMenu';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {View, Text} from 'react-native';
+import {Image} from 'react-native';
+
+const Icon1 = ({name}) => (
+  <Image
+    source={require('../assets/icon/order-list.png')}
+    style={{width: 40, height: 40}}
+  />
+);
+
+const Icon2 = ({name}) => (
+  <Image
+    source={require('../assets/icon/edit-menu.png')}
+    style={{width: 40, height: 40}}
+  />
+);
 
 function AdminScreen() {
   const Tab = createBottomTabNavigator();
@@ -11,20 +26,20 @@ function AdminScreen() {
         style: {
           // borderTopLeftRadius: 15,
           // borderTopRightRadius: 15,
-          // height: 60,
+          height: 60,
           // backgroundColor: 'blue',
         },
       }}>
       <Tab.Screen
         name="OrderList"
         component={OrderList}
-        options={{tabBarLabel: 'Order List'}}
+        options={{tabBarLabel: '', tabBarIcon: Icon1}}
       />
-      {/* <Tab.Screen
+      <Tab.Screen
         name="EditMenu"
         component={EditMenu}
-        options={{tabBarLabel: 'Edit Menu'}}
-      /> */}
+        options={{tabBarLabel: '', tabBarIcon: Icon2}}
+      />
     </Tab.Navigator>
   );
 }
