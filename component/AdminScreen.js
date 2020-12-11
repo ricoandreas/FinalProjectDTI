@@ -8,13 +8,23 @@ function AdminScreen() {
   return (
     <Tab.Navigator
       tabBarOptions={{
-        style: {borderTopLeftRadius: 15, borderTopRightRadius: 15, height: 60},
+        style: {
+          // borderTopLeftRadius: 15,
+          // borderTopRightRadius: 15,
+          // height: 60,
+          // backgroundColor: 'blue',
+        },
       }}>
       <Tab.Screen
         name="OrderList"
         component={OrderList}
         options={{tabBarLabel: 'Order List'}}
       />
+      {/* <Tab.Screen
+        name="EditMenu"
+        component={EditMenu}
+        options={{tabBarLabel: 'Edit Menu'}}
+      /> */}
     </Tab.Navigator>
   );
 }
