@@ -3,6 +3,7 @@ import {Icons} from './components';
 import {
   View,
   Text,
+  Image,
   FlatList,
   ScrollView,
   StyleSheet,
@@ -80,7 +81,22 @@ function OrderList() {
     <View>
       <View style={css.header}>
         <Text style={css.headerWhite}>ORDER LIST</Text>
-        <Text style={css.headerWhite}>Logout</Text>
+        <TouchableOpacity style={css.headerWhite}>
+          <View
+            style={{
+              backgroundColor: '#ffffff',
+              borderRadius: 50,
+              padding: 5,
+            }}>
+            <Image
+              source={require('../assets/icon/exit.png')}
+              style={{
+                width: 15,
+                height: 15,
+              }}
+            />
+          </View>
+        </TouchableOpacity>
       </View>
       <View style={css.container}>
         <ScrollView>
